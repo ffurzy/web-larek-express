@@ -9,7 +9,7 @@ export const getProducts = async (_req: Request, res: Response, next: NextFuncti
     const products = await Product.find({});
     const total = await Product.countDocuments();
 
-    res.send({
+    res.json({
       items: products,
       total,
     });
@@ -36,7 +36,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       price,
     });
 
-    return res.status(201).send(product);
+    return res.status(201).json(product);
   } catch (error: any) {
     // 400 валидация монгус
     if (error instanceof MongooseError.ValidationError) {

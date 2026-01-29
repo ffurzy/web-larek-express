@@ -22,8 +22,8 @@ app.use(express.json());
 
 app.use(requestLogger);
 
-app.use(productRoutes);
-app.use(orderRoutes);
+app.use('/product', productRoutes);
+app.use('/order', orderRoutes);
 
 app.get('/', (_req, res) => {
   res.send({ message: 'Web Larek API is Running' });

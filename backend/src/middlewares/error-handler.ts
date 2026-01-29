@@ -21,7 +21,7 @@ const errorHandler = (
     message = 'Товар с таким title уже существует';
   }
 
-  res.status(statusCode).send({ message });
+  return res.status(statusCode).json({ message });
 };
 
 export default errorHandler;

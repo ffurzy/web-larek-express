@@ -8,21 +8,21 @@ import {
 
 const router = Router();
 
-router.get('/product', getProducts);
+router.get('/', getProducts);
 router.post(
-  '/product',
+  '/',
   validateCreateProduct,
   createProduct,
 );
 
 router.patch(
-  '/product/:productId',
+  '/:productId',
   validateProductId,
   validateUpdateProduct,
 );
 
 router.delete(
-  '/product/:productId',
+  '/:productId',
   validateProductId,
 );
 
