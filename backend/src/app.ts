@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import { errors } from 'celebrate';
 
 import path from 'path';
@@ -38,8 +39,9 @@ app.use(errors());
 app.use(errorHandler);
 
 // подключаем бд через Mongoose
-const { MONGO_URL = 'mongodb://127.0.0.1:27017/weblarek' } = process.env;
-mongoose.connect(MONGO_URL)
+dotenv.config();
+const { DB_ADDRESS = 'mongodb://127.0.0.1:27017/weblarek' } = process.env;
+mongoose.connect(DB_ADDRESS)
   .then(() => {})
   .catch(() => {});
 
