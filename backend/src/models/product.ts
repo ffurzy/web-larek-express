@@ -27,31 +27,33 @@ const imageSchema = new mongoose.Schema<IImage>(
   { _id: false }, // не добавляет id для вложенного объекта
 );
 
-const productSchema = new mongoose.Schema<IProduct>({
-  title: {
-    type: String,
-    required: [true, 'Введите название'],
-    unique: true,
-    minlength: [2, 'The minimum length of the "title" field is 2.'],
-    maxlength: [30, 'The maximum length of the "title" field is 30.'],
+const productSchema = new mongoose.Schema<IProduct>(
+  {
+    title: {
+      type: String,
+      required: [true, 'Введите название'],
+      unique: true,
+      minlength: [2, 'The minimum length of the "title" field is 2.'],
+      maxlength: [30, 'The maximum length of the "title" field is 30.'],
+    },
+    image: {
+      type: imageSchema,
+      required: true,
+    },
+    category: {
+      required: [true, 'Выберите категорию'],
+      type: String,
+    },
+    description: {
+      type: String,
+      default: '',
+    },
+    price: {
+      type: Number,
+      default: null,
+    },
   },
-  image: {
-    type: imageSchema,
-    required: true,
-  },
-  category: {
-    required: [true, 'Выберите категорию'],
-    type: String,
-  },
-  description: {
-    type: String,
-    default: '',
-  },
-  price: {
-    type: Number,
-    default: null,
-  },
-
-});
+  { versionKey: false },
+);
 
 export default mongoose.model<IProduct>('product', productSchema);
