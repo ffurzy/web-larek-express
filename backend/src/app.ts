@@ -38,7 +38,8 @@ app.use(errors());
 app.use(errorHandler);
 
 // подключаем бд через Mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/weblarek')
+const { MONGO_URL = 'mongodb://127.0.0.1:27017/weblarek' } = process.env;
+mongoose.connect(MONGO_URL)
   .then(() => {})
   .catch(() => {});
 
