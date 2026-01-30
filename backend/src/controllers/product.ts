@@ -37,7 +37,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
     });
 
     return res.status(201).json(product);
-  } catch (error: any) {
+  } catch (error: unknown) {
     // 400 валидация монгус
     if (error instanceof MongooseError.ValidationError) {
       return next(new BadRequestError('Ошибка валидации данных при создании товара'));
