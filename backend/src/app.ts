@@ -3,10 +3,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { errors } from 'celebrate';
-import { apiLimiter } from './middlewares/rate-limiter';
-
 
 import path from 'path';
+import apiLimiter from './middlewares/rate-limiter';
 import productRoutes from './routes/product';
 import orderRoutes from './routes/order';
 
@@ -22,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(express.json());
 
-app.use(apiLimiter); //от дудоса
+app.use(apiLimiter); // от дудоса
 
 app.use(requestLogger);
 app.use('/product', productRoutes);

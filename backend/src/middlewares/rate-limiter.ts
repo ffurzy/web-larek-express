@@ -1,7 +1,7 @@
 import rateLimit from 'express-rate-limit';
-import { rateLimitLogger } from '../utils/rate-limit-logger';
+import rateLimitLogger from '../utils/rate-limit-logger';
 
-export const apiLimiter = rateLimit({
+const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 50,
   message: 'Слишком много запросов с этого IP-адреса, пожалуйста, повторите попытку через 15 минут.',
@@ -23,3 +23,5 @@ export const apiLimiter = rateLimit({
     });
   },
 });
+
+export default apiLimiter;
